@@ -51,20 +51,14 @@
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    <span class="glyphicon glyphicon-leaf"></span> Notifications <span class="badge">99</span>
+                                    <span class="glyphicon glyphicon-leaf"></span> Notifications <span class="badge">{{ count(auth()->user()->unreadNotifications) }}</span>
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
+                                        @foreach(auth()->user()->unreadNotifications as $notif)
+                                            <a href="">{{$notif->type}}</a>
+                                        @endforeach
                                     </li>
                                 </ul>
                             </li>
