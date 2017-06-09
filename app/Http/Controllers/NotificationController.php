@@ -36,4 +36,8 @@ class NotificationController extends Controller
         auth()->user()->notify(new UserNotif($newMessage));
     	return "You notify " . \App\User::findOrFail($idReceiver)->name . "!!<br>Your message is \"" . $message . "\"";
     }
+
+    public function showMessage($id) {
+        return \App\Message::findOrFail($id)->message;
+    }
 }

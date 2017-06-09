@@ -18,6 +18,8 @@ Route::get('/myid', 'NotificationController@id');
 Route::get('/notif', 'NotificationController@notifView');
 Route::post('/submitNotif', 'NotificationController@notif');
 
+Route::get('/message/{id}', 'NotificationController@showMessage');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
