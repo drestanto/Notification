@@ -111,7 +111,7 @@ CREATE TABLE `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -120,6 +120,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'Andi','andi@blog.com','$2y$10$FtDdT3TNq3XWJON3a8jUiOFIL1vXR1XGrmJTByxOygLIUjz2hYQru','eSQVt8BVMTHxqItfDb2rqLTPYMxa71cRCaZThLBkOu14ggt34hDAiGFKsZv3','2017-06-08 19:29:30','2017-06-08 19:29:30'),(2,'Budi','budi@blog.com','$2y$10$TVZvoAfnvcJ86JyBtiJ.OeDSl2AGJ5kghktbLvI6atDQ/FAPfOjAS','DbqHgdmwp7pwrvvFArVK5QzJLRTarwTEle1LHT8deoJk6krHPmglmVKVN20e','2017-06-08 19:29:54','2017-06-08 19:29:54'),(3,'Cepe','cepe@blog.com','$2y$10$fbD2W8ENnJzG0JLcJFSYjOMN0VRN5wNkKfOcs.3GTTbthhD110vTC','2bebmgLDzAaPRO2OM3HCCS5amurkMMFZrm9y9IaVTZAgKCIPps46kKVJ8Im1','2017-06-08 19:30:15','2017-06-08 19:30:15');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -132,4 +133,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-06-08 15:55:32
+-- Dump completed on 2017-06-09  9:31:13
