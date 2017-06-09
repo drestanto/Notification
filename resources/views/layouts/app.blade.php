@@ -57,7 +57,7 @@
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
                                         @foreach(auth()->user()->unreadNotifications as $notif)
-                                            <a href="">{{$notif->type}}</a>
+                                            <a href="">{{$notif->data['user']['name']}} messages you!</a>
                                         @endforeach
                                     </li>
                                 </ul>
