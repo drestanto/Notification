@@ -33,11 +33,13 @@ class NotificationController extends Controller
         $newMessage->to_id = $idReceiver;
         $newMessage->save();
 
-        auth()->user()->notify(new UserNotif($newMessage));
-    	return "You notify " . \App\User::findOrFail($idReceiver)->name . "!!<br>Your message is \"" . $message . "\"";
+        $receiver = \App\User::findOrFail($idReceiver);
+        $receiver->notify(new UserNotif($newMessage));
+    	return "You notify " . $receiver->name . "!!<br>Your message is \"" . $message . "\"";
     }
 
     public function showMessage($id) {
+        auth()->user()->unreadNotifications->markAsRead();
         return \App\Message::findOrFail($id)->message;
     }
 }
