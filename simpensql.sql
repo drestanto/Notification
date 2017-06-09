@@ -30,7 +30,7 @@ CREATE TABLE `messages` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,6 +39,7 @@ CREATE TABLE `messages` (
 
 LOCK TABLES `messages` WRITE;
 /*!40000 ALTER TABLE `messages` DISABLE KEYS */;
+INSERT INTO `messages` VALUES (1,'Oi, Andi, Apa kabar??',2,1,'2017-06-09 01:47:13','2017-06-09 01:47:13'),(2,'Cepe, besok bukber yuk',2,3,'2017-06-09 01:47:27','2017-06-09 01:47:27'),(3,'Eh, jangan lupa lusa ada kumpul!!!',2,1,'2017-06-09 01:47:48','2017-06-09 01:47:48'),(4,'Budi ngajak gw bukber coy',3,1,'2017-06-09 01:48:38','2017-06-09 01:48:38');
 /*!40000 ALTER TABLE `messages` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -94,6 +95,7 @@ CREATE TABLE `notifications` (
 
 LOCK TABLES `notifications` WRITE;
 /*!40000 ALTER TABLE `notifications` DISABLE KEYS */;
+INSERT INTO `notifications` VALUES ('53e2f9c8-6a56-442a-bcbc-86749eb89034','App\\Notifications\\UserNotif',1,'App\\User','{\"message\":{\"message\":\"Budi ngajak gw bukber coy\",\"from_id\":3,\"to_id\":\"1\",\"updated_at\":\"2017-06-09 08:48:38\",\"created_at\":\"2017-06-09 08:48:38\",\"id\":4},\"user\":{\"id\":3,\"name\":\"Cepe\",\"email\":\"cepe@blog.com\",\"created_at\":\"2017-06-08 12:30:15\",\"updated_at\":\"2017-06-08 12:30:15\"}}','2017-06-09 01:49:04','2017-06-09 01:48:38','2017-06-09 01:49:04'),('6c1f4e58-de7d-496c-bb94-150455a70700','App\\Notifications\\UserNotif',1,'App\\User','{\"message\":{\"message\":\"Eh, jangan lupa lusa ada kumpul!!!\",\"from_id\":2,\"to_id\":\"1\",\"updated_at\":\"2017-06-09 08:47:48\",\"created_at\":\"2017-06-09 08:47:48\",\"id\":3},\"user\":{\"id\":2,\"name\":\"Budi\",\"email\":\"budi@blog.com\",\"created_at\":\"2017-06-08 12:29:54\",\"updated_at\":\"2017-06-08 12:29:54\"}}','2017-06-09 01:49:04','2017-06-09 01:47:48','2017-06-09 01:49:04'),('74dec272-bd7f-44fb-bf46-9b3939c6df7d','App\\Notifications\\UserNotif',3,'App\\User','{\"message\":{\"message\":\"Cepe, besok bukber yuk\",\"from_id\":2,\"to_id\":\"3\",\"updated_at\":\"2017-06-09 08:47:27\",\"created_at\":\"2017-06-09 08:47:27\",\"id\":2},\"user\":{\"id\":2,\"name\":\"Budi\",\"email\":\"budi@blog.com\",\"created_at\":\"2017-06-08 12:29:54\",\"updated_at\":\"2017-06-08 12:29:54\"}}','2017-06-09 01:48:15','2017-06-09 01:47:27','2017-06-09 01:48:15'),('9b37c117-ae18-45f4-9801-75384235c1d0','App\\Notifications\\UserNotif',1,'App\\User','{\"message\":{\"message\":\"Oi, Andi, Apa kabar??\",\"from_id\":2,\"to_id\":\"1\",\"updated_at\":\"2017-06-09 08:47:13\",\"created_at\":\"2017-06-09 08:47:13\",\"id\":1},\"user\":{\"id\":2,\"name\":\"Budi\",\"email\":\"budi@blog.com\",\"created_at\":\"2017-06-08 12:29:54\",\"updated_at\":\"2017-06-08 12:29:54\"}}','2017-06-09 01:49:04','2017-06-09 01:47:13','2017-06-09 01:49:04');
 /*!40000 ALTER TABLE `notifications` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -147,7 +149,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Andi','andi@blog.com','$2y$10$FtDdT3TNq3XWJON3a8jUiOFIL1vXR1XGrmJTByxOygLIUjz2hYQru','gBEFukr5xqC6GfLqijvz0gb7XG1Cm4MgvArn5X8fyK2mldGODrPIhOa5mEm6','2017-06-08 05:29:30','2017-06-08 05:29:30'),(2,'Budi','budi@blog.com','$2y$10$TVZvoAfnvcJ86JyBtiJ.OeDSl2AGJ5kghktbLvI6atDQ/FAPfOjAS','7rh3TX9IbmjqG1QmcROyNYTo36Vfl0gBEqBmPG5fiMuRpxjdDLbkLpDyIeHJ','2017-06-08 05:29:54','2017-06-08 05:29:54'),(3,'Cepe','cepe@blog.com','$2y$10$fbD2W8ENnJzG0JLcJFSYjOMN0VRN5wNkKfOcs.3GTTbthhD110vTC','HGn3meaJYbkzAyDqwDb1WcQu42UedF2c8tcyuHrmU4XUN7hwFNJcFWO3pbPa','2017-06-08 05:30:15','2017-06-08 05:30:15');
+INSERT INTO `users` VALUES (1,'Andi','andi@blog.com','$2y$10$FtDdT3TNq3XWJON3a8jUiOFIL1vXR1XGrmJTByxOygLIUjz2hYQru','X12ni96LUA8FkN4hMWdFjT7u04S0xMmlJPo9MtAPg1KZ5tnalNsc7WVOhDnH','2017-06-08 05:29:30','2017-06-08 05:29:30'),(2,'Budi','budi@blog.com','$2y$10$TVZvoAfnvcJ86JyBtiJ.OeDSl2AGJ5kghktbLvI6atDQ/FAPfOjAS','bNHgsQZFNl31lA3L4cMwdDjRzxlXoqLGEbijZVLnK7vz3kaDqsD37PBYKcHz','2017-06-08 05:29:54','2017-06-08 05:29:54'),(3,'Cepe','cepe@blog.com','$2y$10$fbD2W8ENnJzG0JLcJFSYjOMN0VRN5wNkKfOcs.3GTTbthhD110vTC','CYsnshclElV6DRaxeSymnkCiNobcdukjMTdRlTXOPbW3CBNeqHYZhRVlBX9c','2017-06-08 05:30:15','2017-06-08 05:30:15');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -160,4 +162,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-06-09 15:20:59
+-- Dump completed on 2017-06-09 15:54:58
