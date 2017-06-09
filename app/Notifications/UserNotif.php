@@ -46,7 +46,7 @@ class UserNotif extends Notification
         //dd($notifiable);
         return [
             'message'=>$this->message,
-            'user'=>$notifiable,
+            'user'=>auth()->user(),
         ];
     }
 

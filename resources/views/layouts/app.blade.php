@@ -57,7 +57,7 @@
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
                                         @foreach(auth()->user()->unreadNotifications as $notif)
-                                            <a href="/message/{{$notif->data['message']['id']}}">{{\App\User::findOrFail($notif->data['message']['from_id'])->name}} messages you at {{$notif->created_at}}</a>
+                                            <a href="/message/{{$notif->data['message']['id']}}">{{$notif->data['user']['name']}} messages you at {{$notif->created_at}}</a>
                                         @endforeach
                                     </li>
                                 </ul>
