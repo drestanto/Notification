@@ -5,6 +5,7 @@
 <body>
 	<h3> Give notif to other user </h3>
 	@if (Auth::check())
+		Hello, {{ Auth::user()->name }}!!<br><br>
 		<form action="/submitNotif" method="post">
 			Choose User : <select name="user">
 				@foreach ($users as $user)

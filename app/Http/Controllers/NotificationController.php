@@ -23,4 +23,8 @@ class NotificationController extends Controller
     }
 
     //action
+    public function notif(Request $request) {
+    	return "A";
+    	return "You notify " . \App\User::findOrFail($request->user)->name . "!!";
+    }
 }

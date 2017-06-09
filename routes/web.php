@@ -16,6 +16,7 @@ Route::get('/', function () {
 });
 Route::get('/myid', 'NotificationController@id');
 Route::get('/notif', 'NotificationController@notifView');
+Route::post('/submitNotif', 'NotificationController@notif');
 
 Auth::routes();
 
