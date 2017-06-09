@@ -14,6 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/myid', 'NotificationController@id');
 
 Auth::routes();
 
