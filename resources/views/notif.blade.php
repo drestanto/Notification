@@ -3,10 +3,11 @@
 	<title>Notification</title>
 </head>
 <body>
-	<h3> Give notif to other user </h3>
+	<h3> Give notification to other user </h3>
 	@if (Auth::check())
 		Hello, {{ Auth::user()->name }}!!<br><br>
 		<form action="/submitNotif" method="post">
+			{{ csrf_field() }}
 			Choose User : <select name="user">
 				@foreach ($users as $user)
 					@if ($user->id != Auth::id())
