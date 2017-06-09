@@ -6,7 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
-use Carbon;
+use Carbon\Carbon;
 
 class UserNotif extends Notification
 {
@@ -42,7 +42,7 @@ class UserNotif extends Notification
     public function toDatabase($notifiable)
     {
         return [
-            'notifTime'=>Carbon::now();
+            'notifTime'=>Carbon::now()
         ];
     }
 

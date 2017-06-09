@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use App\Notifications\UserNotif;
 
 class NotificationController extends Controller
 {
@@ -24,7 +25,7 @@ class NotificationController extends Controller
 
     //action
     public function notif(Request $request) {
-    	
+    	auth()->user()->notify(new UserNotif());
     	return "You notify " . \App\User::findOrFail($request->user)->name . "!!";
     }
 }
