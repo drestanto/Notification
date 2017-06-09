@@ -9,6 +9,16 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    //Message-sent
+    public function sentMessages() {
+        return $this->hasMany(Message::class, 'from_id');
+    }
+
+    //Message-received
+    public function receivedMessages() {
+        return $this->hasMany(Message::class, 'to_id');
+    }
+
     /**
      * The attributes that are mass assignable.
      *
