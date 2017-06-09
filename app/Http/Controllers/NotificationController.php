@@ -25,7 +25,6 @@ class NotificationController extends Controller
 
     //action
     public function notif(Request $request) {
-    	// auth()->user()->notify(new UserNotif());
         $message = $request->message;
         $idReceiver = $request->user;
         $newMessage = new \App\Message;
@@ -34,6 +33,7 @@ class NotificationController extends Controller
         $newMessage->to_id = $idReceiver;
         $newMessage->save();
 
+        auth()->user()->notify(new UserNotif($newMessage));
     	return "You notify " . \App\User::findOrFail($idReceiver)->name . "!!<br>Your message is \"" . $message . "\"";
     }
 }

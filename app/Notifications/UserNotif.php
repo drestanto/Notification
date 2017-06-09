@@ -12,14 +12,16 @@ class UserNotif extends Notification
 {
     use Queueable;
 
+    protected $message;
+
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($message)
     {
-        //
+        $this->message = $message;
     }
 
     /**
@@ -41,8 +43,10 @@ class UserNotif extends Notification
      */
     public function toDatabase($notifiable)
     {
+        //dd($notifiable);
         return [
-            'notifTime'=>Carbon::now()
+            'message'=>$this->message,
+            'user'=>$notifiable,
         ];
     }
 
