@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\Notifications\UserNotif;
+use Mail;
+use Swift_Transport;
+use Swift_Message;
+use Swift_Mailer;
 
 class NotificationController extends Controller
 {
@@ -23,32 +27,7 @@ class NotificationController extends Controller
     	return view('notif',compact('users'));
     }
 
-    //action
-    public function notif(Request $request) {
-        $message = $request->message;
-        $idReceiver = $request->user;
-        $newMessage = new \App\Message;
-        $newMessage->message = $message;
-        $newMessage->from_id = Auth::id();
-        $newMessage->to_id = $idReceiver;
-        $newMessage->save();
-
-        $receiver = \App\User::findOrFail($idReceiver);
-        $receiver->notify(new UserNotif($newMessage));
-    	return "You notify " . $receiver->name . "!!<br>Your message is \"" . $message . "\"";
-    }
-
-    public function showMessage($id) {
-        $message = \App\Message::findOrFail($id);
-        $sender = \App\User::findOrFail($message->from_id);
-        if (Auth::id() == $message->to_id) {
-            auth()->user()->unreadNotifications->markAsRead();
-            return $sender->name . " messaged you :<br>" . $message->message;
-        } else return "You have no right to open this message";
-    }
-
-
-    /**
+/**
      * Update posisi menu
      *
      * @param  int  $id
@@ -62,7 +41,7 @@ class NotificationController extends Controller
  
             $email_sender   = 'spartahmif2015@gmail.com';
             $email_pass     = 'KekeluargaanForSparta';
-            $email_to       = '13514099@std.stei.itb.ac.id';
+            $email_to       = $email_sender;
  
             // Backup your default mailer
             $backup = \Mail::getSwiftMailer();
@@ -84,15 +63,15 @@ class NotificationController extends Controller
                 $data['sender'] = $email_to;
                 //Sender dan Reply harus sama
 
-                Mail::send('emails.html', $data_toview, function($message) use ($data)
+                Mail::send('email', $data_toview, function($message) use ($data)
                 {
 
-                    $message->from($data['sender'], 'Laravel Mailer');
+                    $message->from($data['sender'], 'Mamet Sparta');
                     $message->to($data['emailto'])
-                    ->replyTo($data['sender'], 'Laravel Mailer')
-                    ->subject('Test Email');
+                    ->replyTo($data['sender'], 'Mamet Sparta')
+                    ->subject('Notification');
 
-                    echo 'The mail has been sent successfully';
+                    echo 'The mail has been sent successfully' . '<br>';
 
                 });
  
@@ -109,5 +88,32 @@ class NotificationController extends Controller
     }
 
 
+    //action
+    public function notif(Request $request) {
+        $message = $request->message;
+        $idReceiver = $request->user;
+        $newMessage = new \App\Message;
+        $newMessage->message = $message;
+        $newMessage->from_id = Auth::id();
+        $newMessage->to_id = $idReceiver;
+        $newMessage->save();
+
+        $receiver = \App\User::findOrFail($idReceiver);
+        $receiver->notify(new UserNotif($newMessage));
+        $this->sendemail();
+    	return "You notify " . $receiver->name . "!!<br>Your message is \"" . $message . "\"";
+    }
+
+    public function showMessage($id) {
+        $message = \App\Message::findOrFail($id);
+        $sender = \App\User::findOrFail($message->from_id);
+        if (Auth::id() == $message->to_id) {
+            auth()->user()->unreadNotifications->markAsRead();
+            return $sender->name . " messaged you :<br>" . $message->message;
+        } else return "You have no right to open this message";
+    }
+
+
+    
 
 }
