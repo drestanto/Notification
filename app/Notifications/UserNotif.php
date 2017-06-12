@@ -32,7 +32,7 @@ class UserNotif extends Notification
      */
     public function via($notifiable)
     {
-        return ['database'];
+        return ['database', 'mail'];
     }
 
     /**
@@ -48,6 +48,23 @@ class UserNotif extends Notification
             'message'=>$this->message,
             'user'=>auth()->user(),
         ];
+    }
+
+    /**
+     * Get the mail representation of the notification.
+     *
+     * @param  mixed  $notifiable
+     * @return \Illuminate\Notifications\Messages\MailMessage
+     */
+    public function toMail($notifiable)
+    {
+        $url = url('/invoice/'.$this->invoice->id);
+
+        return (new MailMessage)
+                    ->greeting('Hello!')
+                    ->line('One of your invoices has been paid!')
+                    ->action('View Invoice', $url)
+                    ->line('Thank you for using our application!');
     }
 
     /**
