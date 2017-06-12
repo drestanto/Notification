@@ -15,7 +15,7 @@
 					@endif
 				@endforeach
 			</select><br>
-			<input type="text" name="message" placeholder="insert message please">
+			<textarea name="message" placeholder="insert message please"></textarea>
 			<input type="submit" value="Notify!">
 		</form>
 	@else You need to Login before using this feature.

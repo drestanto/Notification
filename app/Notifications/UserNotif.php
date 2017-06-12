@@ -59,12 +59,14 @@ class UserNotif extends Notification
     public function toMail($notifiable)
     {
         $url = url('/home/');
+        $name = auth()->user()->name;
+        $pesan = $this->message->message;
 
         return (new MailMessage)
                     ->greeting('Hello!')
-                    ->line('One of your invoices has been paid!')
-                    ->action('View Invoice', $url)
-                    ->line('Thank you for using our application!');
+                    ->line('There is a message from ' . $name )
+                    ->action('Homepage', $url)
+                    ->line('This is the message : ' . $pesan);
     }
 
     /**
