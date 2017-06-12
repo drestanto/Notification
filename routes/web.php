@@ -20,6 +20,9 @@ Route::post('/submitNotif', 'NotificationController@notif');
 
 Route::get('/message/{id}', 'NotificationController@showMessage');
 
+//Test Kirim Email
+Route::get('sendemail', 'NotificationController@sendemail');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

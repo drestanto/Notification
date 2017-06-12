@@ -58,7 +58,7 @@ class UserNotif extends Notification
      */
     public function toMail($notifiable)
     {
-        $url = url('/invoice/'.$this->invoice->id);
+        $url = url('/home/');
 
         return (new MailMessage)
                     ->greeting('Hello!')
