@@ -108,7 +108,12 @@ class NotificationController extends Controller
         $message = \App\Message::findOrFail($id);
         $sender = \App\User::findOrFail($message->from_id);
         if (Auth::id() == $message->to_id) {
-            auth()->user()->unreadNotifications->markAsRead();
+            // auth()->user()->unreadNotifications->markAsRead();
+            $unread = auth()->user()->unreadNotifications;
+            foreach ($unread as $notif) {
+                if ($notif->data['message']['id'] == $id)
+                    $notif->markAsRead();
+            }
             return $sender->name . " messaged you :<br>" . $message->message;
         } else return "You have no right to open this message";
     }
