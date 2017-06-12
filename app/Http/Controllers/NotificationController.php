@@ -100,7 +100,7 @@ class NotificationController extends Controller
 
         $receiver = \App\User::findOrFail($idReceiver);
         $receiver->notify(new UserNotif($newMessage));
-        $this->sendemail();
+        // $this->sendemail();
     	return "You notify " . $receiver->name . "!!<br>Your message is \"" . $message . "\"";
     }
 
